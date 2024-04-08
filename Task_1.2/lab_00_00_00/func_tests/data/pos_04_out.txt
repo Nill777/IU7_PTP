@@ -1,0 +1,12 @@
+food
+coffee
+1200
+1
+food
+grape
+300
+3
+food
+milk
+90
+1

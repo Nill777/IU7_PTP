@@ -1,0 +1,2 @@
+sb
+./func_tests/data/pos_08_out.txt

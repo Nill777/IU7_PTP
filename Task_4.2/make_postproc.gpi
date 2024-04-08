@@ -1,0 +1,40 @@
+#!/usr/bin/gnuplot -persist
+
+# Сбрасываем настройки
+reset
+
+NO_ANIMATION = 1
+
+set terminal svg size 1920, 1080
+
+# Золотое сечение как отношение осей
+set size ratio 0.61803
+
+set title "Зависимость времени сортировки"
+set xlabel "Количество элементов, шт"
+set ylabel "Время (мс)"
+# Включение сетки
+set grid
+
+# Отрисовка
+set output "./graphs/all_graphs.svg"
+plot "./preproc/pre_multiply_O0.txt" title "multiply O0" with linespoints pt 1 lt rgb "#eb1717", \
+"./preproc/pre_multiply_O2.txt" title "multiply O2" with linespoints pt 2 lt rgb "#173eeb", \
+"./preproc/pre_multiply_O3.txt" title "multiply O3" with linespoints pt 12 lt rgb "#595754", \
+"./preproc/pre_multiply_Os.txt" title "multiply Os" with linespoints pt 8 lt rgb "#06c238", \
+"./preproc/pre_tmultiply_O0.txt" title "tmultiply O0" with linespoints pt 6 lt rgb "#aa0fd1", \
+"./preproc/pre_tmultiply_O2.txt" title "tmultiply O2" with linespoints pt 10 lt rgb "#f7a50c", \
+"./preproc/pre_tmultiply_O3.txt" title "tmultiply O3" with linespoints pt 14 lt rgb "#ff21b1", \
+"./preproc/pre_tmultiply_Os.txt" title "tmultiply Os" with linespoints pt 18 lt rgb "#21e5ff"
+
+set output "./graphs/multiply_graphs.svg"
+plot "./preproc/pre_multiply_O0.txt" title "multiply O0" with linespoints pt 1 lt rgb "#eb1717", \
+"./preproc/pre_multiply_O2.txt" title "multiply O2" with linespoints pt 2 lt rgb "#173eeb", \
+"./preproc/pre_multiply_O3.txt" title "multiply O3" with linespoints pt 12 lt rgb "#595754", \
+"./preproc/pre_multiply_Os.txt" title "multiply Os" with linespoints pt 8 lt rgb "#06c238"
+
+set output "./graphs/tmultiply_graphs.svg"
+plot "./preproc/pre_tmultiply_O0.txt" title "tmultiply O0" with linespoints pt 1 lt rgb "#aa0fd1", \
+"./preproc/pre_tmultiply_O2.txt" title "tmultiply O2" with linespoints pt 2 lt rgb "#f7a50c", \
+"./preproc/pre_tmultiply_O3.txt" title "tmultiply O3" with linespoints pt 12 lt rgb "#ff21b1", \
+"./preproc/pre_tmultiply_Os.txt" title "tmultiply Os" with linespoints pt 8 lt rgb "#21e5ff"

@@ -1,0 +1,16 @@
+cloth
+dress
+3000
+23
+cloth
+hoodie
+3000
+22
+cloth
+jeans
+3000
+22
+cloth
+sweater
+3000
+21

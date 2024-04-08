@@ -1,0 +1,47 @@
+#!/usr/bin/gnuplot -persist
+
+# Сбрасываем настройки
+reset
+
+NO_ANIMATION = 1
+
+set terminal svg size 1920, 1080
+
+# Золотое сечение как отношение осей
+set size ratio 0.61803
+
+set title "Зависимость времени сортировки"
+set xlabel "Количество элементов, шт"
+set ylabel "Время (мкс)"
+# Включение сетки
+set grid
+
+# Отрисовка
+set output "./graphs/sort.svg"
+plot "./preproc/presort_index_O0.txt" title "sort index O0" with linespoints pt 1 lt rgb "#eb1717", \
+"./preproc/presort_index_O2.txt" title "sort index O2" with linespoints pt 2 lt rgb "#173eeb", \
+"./preproc/presort_expression_O0.txt" title "sort expression O0" with linespoints pt 12 lt rgb "#595754", \
+"./preproc/presort_expression_O2.txt" title "sort expression O2" with linespoints pt 8 lt rgb "#06c238", \
+"./preproc/presort_pointer_O0.txt" title "sort pointer O0" with linespoints pt 9 lt rgb "#aa0fd1", \
+"./preproc/presort_pointer_O2.txt" title "sort pointer O2" with linespoints pt 6 lt rgb "#f7a50c"
+
+set output "./graphs/unsort.svg"
+plot "./preproc/preunsort_index_O0.txt" title "unsort index O0" with linespoints pt 1 lt rgb "#eb1717", \
+"./preproc/preunsort_index_O2.txt" title "unsort index O2" with linespoints pt 2 lt rgb "#173eeb", \
+"./preproc/preunsort_expression_O0.txt" title "unsort expression O0" with linespoints pt 12 lt rgb "#595754", \
+"./preproc/preunsort_expression_O2.txt" title "unsort expression O2" with linespoints pt 8 lt rgb "#06c238", \
+"./preproc/preunsort_pointer_O0.txt" title "unsort pointer O0" with linespoints pt 9 lt rgb "#aa0fd1", \
+"./preproc/preunsort_pointer_O2.txt" title "unsort pointer O2" with linespoints pt 6 lt rgb "#f7a50c"
+
+set output "./graphs/error.svg"
+plot "./preproc/preunsort_index_O2.txt" using 1:2:4:3 with yerrorlines pt 2 lt rgb "#eb1717" title "unsort index O2", \
+"./preproc/preunsort_expression_O2.txt" using 1:2:4:3 with yerrorlines pt 12 lt rgb "#f7a50c" title "unsort expression O2", \
+"./preproc/preunsort_pointer_O2.txt" using 1:2:4:3 with yerrorlines pt 6 lt rgb "#173eeb" title "unsort pointer O2"
+
+set output "./graphs/mustache.svg"
+plot "./preproc/presort_index_O2.txt" using 1:5:4:3:7 with candlesticks whiskerbars lt rgb "#eb1717" notitle, \
+'' using 1:6:6:6:6 with candlesticks lt rgb "#eb1717" notitle, \
+"./preproc/presort_index_O2.txt" title "sort index O2" with lines lt rgb "#eb1717", \
+"./preproc/preunsort_index_O2.txt" using 1:5:4:3:7 with candlesticks whiskerbars lt rgb "#f7a50c" notitle, \
+'' using 1:6:6:6:6 with candlesticks lt rgb "#f7a50c" notitle, \
+"./preproc/preunsort_index_O2.txt" title "unsort index O2" with lines lt rgb "#f7a50c"

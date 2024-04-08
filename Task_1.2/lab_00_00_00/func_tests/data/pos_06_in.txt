@@ -1,0 +1,12 @@
+cloth
+dress
+5000
+1
+cloth
+shirt
+3000
+4
+cloth
+cap
+20
+15

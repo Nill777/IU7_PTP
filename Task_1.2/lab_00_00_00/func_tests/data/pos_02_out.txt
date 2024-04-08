@@ -1,0 +1,16 @@
+pen
+cat
+1000
+6
+gen
+lib
+1000
+5
+ren
+google
+1000
+4
+pen
+bic
+500
+5
